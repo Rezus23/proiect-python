@@ -13,7 +13,23 @@ class Employee:
 
     def display_employee(self):
         print(f"Name: {self.name}, Salary: {self.salary}, Department: {self.department}")
+    
+    def update_salary(self, new_salary):
+        self.salary = new_salary
 
+##    def add_task(self, task_name):
+##        self.tasks[task_name] = "New"   # needs tasks defined before (in __init__)
+##
+##    def update_tasks(self, task_name, status):
+##        self.tasks[task_name] = status
+    def modify_task(self, task_name, status="New"):
+        self.tasks[task_name]=status
+
+    def display_task(self, status):
+        print(f"Taskuri cu statusul {status}")
+        for name in self.tasks.keys():
+            if self.tasks[name] == status:
+                print(name)
 
 class Manager(Employee):
     mgr_count = 0
