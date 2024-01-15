@@ -1,5 +1,6 @@
 import tkinter as tk
 from forex_python.converter import CurrencyRates
+import deschidere
 
 
 class ConverterApp:
@@ -8,10 +9,11 @@ class ConverterApp:
         self.master = master
         self.master.title("Converter App")
         
-
         self.create_currency_converter()
         self.create_memory_converter()
         self.create_physics_converter()
+        back_button = tk.Button(master, text="EXIT", command=exit)
+        back_button.grid(row=1, column=2,pady=10)
 
     def create_currency_converter(self):
         currency_frame = tk.Frame(self.master,bd =2, relief=tk.RIDGE)
@@ -316,6 +318,8 @@ class ConverterApp:
             self.result_label_mass.config(text=result_str)
         except ValueError:
             self.result_label_mass.config(text="Invalid input. Please enter a valid number.")
+    def exit():
+        self.master.destroy()
 
 if __name__ == "__main__":
     app = ConverterApp(tk.Tk())
