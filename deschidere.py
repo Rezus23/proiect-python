@@ -4,7 +4,6 @@ from proiect import ConverterApp
 
 
 
-
 def execute_converter():
     root = tk.Tk()
     app = ConverterApp(root)
@@ -18,7 +17,6 @@ class Table:
         self.create_table()
 
     def create_table(self):
-        
         header_values = ["Factor", "Name", "Symbol", "Factor", "Name", "Symbol"]
         data_values = [
             ("10^1", "deca", "da", "10^(-1)", "deci", "d"),
@@ -32,19 +30,22 @@ class Table:
             ("10^21", "zetta", "Z", "10^(-21)", "zepto", "z"),
             ("10^24", "yotta", "Y", "10^(-24)", "yocto", "y")
         ]
-
         total_rows = len(data_values)
         total_columns = len(data_values[0])
 
-        # Display header
-        
-        for j, header in enumerate(header_values):
-            tk.Label(self.root, text=header, font=('Arial', 16, 'bold')).grid(row=0, column=j)
+       
+        background_color = '#f9ecde'  
 
-        # Display data
+        # Display header
+        for j, header in enumerate(header_values):
+            label = tk.Label(self.root, text=header, font=('Arial', 16, 'bold'), background=background_color, padx=10, pady=5, relief=tk.GROOVE)
+            label.grid(row=0, column=j)
+
+        # Display data with table lines
         for i, data_row in enumerate(data_values):
             for j, value in enumerate(data_row):
-                tk.Label(self.root, text=value, font=('Arial', 12)).grid(row=i + 1, column=j)
+                label = tk.Label(self.root, text=value, font=('Arial', 12), background=background_color, padx=10, pady=5,)
+                label.grid(row=i + 1, column=j)
 
         # Add a back button
         back_button = tk.Button(self.root, text="Back", command=self.back_command)
@@ -55,8 +56,10 @@ def multiples_and_submultiples():
         root.destroy()  
         main_window.deiconify() 
 
-    root = tk.Toplevel() 
+    root = tk.Toplevel()
+   
     root.title("Multiples and Submultiples Table")
+    
     
     t = Table(root, back_command=back_to_main)
     root.mainloop()
@@ -82,6 +85,7 @@ button1.pack(pady=100)
 
 button2 = tk.Button(main_window, text="Open table of units", command=multiples_and_submultiples)
 button2.pack()
+
 
 main_window.mainloop()
 
