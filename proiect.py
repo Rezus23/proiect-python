@@ -1,4 +1,5 @@
 import tkinter as tk
+from typing import Self
 from forex_python.converter import CurrencyRates
 import deschidere
 
@@ -8,25 +9,26 @@ class ConverterApp:
     def __init__(self, master):
         self.master = master
         self.master.title("Converter App")
+        self.master.config(bg='#73d6ff')
         
         self.create_currency_converter()
         self.create_memory_converter()
         self.create_physics_converter()
-        back_button = tk.Button(master, text="EXIT", command=exit)
+        back_button = tk.Button(master, text="EXIT",bg="#FF0000", command=exit,)
         back_button.grid(row=1, column=2,pady=10)
 
     def create_currency_converter(self):
-        currency_frame = tk.Frame(self.master,bd =2, relief=tk.RIDGE)
+        currency_frame = tk.Frame(self.master,bd =2, relief=tk.RIDGE,bg='#39A388')
         currency_frame.grid(row=0, column=0, padx=10, pady=10, sticky=tk.W)
-        currency_label = tk.Label(currency_frame, text="Currency Converter", font=("Calibri", 16, "bold"))
+        currency_label = tk.Label(currency_frame, text="Currency Converter", font=("Calibri", 16, "bold"),bg='#39A388')
         currency_label.grid(row=0, column=0, columnspan=2, pady=10)
         #row1
-        amount_label = tk.Label(currency_frame, text="Amount:")
+        amount_label = tk.Label(currency_frame, text="Amount:", bg='#39A388')
         amount_label.grid(row=1, column=0, pady=5, padx=5, sticky=tk.E)
         self.amount_entry = tk.Entry(currency_frame)
         self.amount_entry.grid(row=1, column=1, pady=5, padx=5, sticky=tk.W)
         #row2
-        from_currency_label = tk.Label(currency_frame, text="From Currency:")
+        from_currency_label = tk.Label(currency_frame, text="From Currency:",bg='#39A388')
         from_currency_label.grid(row=2, column=0, pady=5, padx=5, sticky=tk.E)
 
         c = CurrencyRates()
@@ -37,30 +39,30 @@ class ConverterApp:
         from_currency_menu = tk.OptionMenu(currency_frame, self.from_currency_var, *available_currencies)
         from_currency_menu.grid(row=2, column=1, pady=5, padx=5, sticky=tk.W)
         #row3
-        to_currency_label = tk.Label(currency_frame, text="To Currency:")
+        to_currency_label = tk.Label(currency_frame, text="To Currency:",bg='#39A388')
         to_currency_label.grid(row=3, column=0, pady=5, padx=5, sticky=tk.E)
         self.to_currency_var = tk.StringVar()
         self.to_currency_var.set("EUR")  
         to_currency_menu = tk.OptionMenu(currency_frame, self.to_currency_var, *available_currencies)
         to_currency_menu.grid(row=3, column=1, pady=5, padx=5, sticky=tk.W)
         #row4
-        convert_button = tk.Button(currency_frame, text="Convert", command=self.convert_currency)
+        convert_button = tk.Button(currency_frame, text="Convert", command=self.convert_currency, bg='#FFD700' )
         convert_button.grid(row=4, column=0, columnspan=2, pady=10)
         #output
         self.result_label_currency = tk.Label(currency_frame, text="")
         self.result_label_currency.grid(row=5, column=0, columnspan=2, pady=5)
 
     def create_memory_converter(self):
-        memory_frame = tk.Frame(self.master, bd =2, relief=tk.RIDGE)
+        memory_frame = tk.Frame(self.master, bd =2, relief=tk.RIDGE, bg='#6e82b7')
         memory_frame.grid(row=0, column=1, padx=10, pady=10, sticky=tk.W)
-        memory_label = tk.Label(memory_frame, text="Memory Converter", font=("Calibri", 16, "bold"))
+        memory_label = tk.Label(memory_frame, text="Memory Converter", font=("Calibri", 16, "bold"),bg='#6e82b7')
         memory_label.grid(row=0, column=0, columnspan=2, pady=10)
         #row 1
-        value_label = tk.Label(memory_frame, text="Value:")
+        value_label = tk.Label(memory_frame, text="Value:",bg='#6e82b7')
         value_label.grid(row=1, column=0, pady=5, padx=5, sticky=tk.E)
         self.value_entry = tk.Entry(memory_frame)
         self.value_entry.grid(row=1, column=1, pady=5, padx=5, sticky=tk.W)
-        from_base_label = tk.Label(memory_frame, text="From Base:")
+        from_base_label = tk.Label(memory_frame, text="From Base:",bg='#6e82b7')
         #row2
         from_base_label.grid(row=2, column=0, pady=5, padx=5, sticky=tk.E)
         self.from_base_var = tk.StringVar()
@@ -68,84 +70,84 @@ class ConverterApp:
         from_base_menu = tk.OptionMenu(memory_frame, self.from_base_var, "Decimal", "Binary", "Hexadecimal")
         from_base_menu.grid(row=2, column=1, pady=5, padx=5, sticky=tk.W)
         #row3
-        to_base_label = tk.Label(memory_frame, text="To Base:")
+        to_base_label = tk.Label(memory_frame, text="To Base:",bg='#6e82b7')
         to_base_label.grid(row=3, column=0, pady=5, padx=5, sticky=tk.E)
         self.to_base_var = tk.StringVar()
         self.to_base_var.set("Binary") 
         to_base_menu = tk.OptionMenu(memory_frame, self.to_base_var, "Decimal", "Binary", "Hexadecimal")
         to_base_menu.grid(row=3, column=1, pady=5, padx=5, sticky=tk.W)
         #row4
-        convert_memory_button = tk.Button(memory_frame, text="Convert", command=self.convert_memory)
+        convert_memory_button = tk.Button(memory_frame, text="Convert", bg='#f7e8d8', command=self.convert_memory)
         convert_memory_button.grid(row=4, column=0, columnspan=2, pady=10)
         self.result_label_memory = tk.Label(memory_frame, text="")
         #output
         self.result_label_memory.grid(row=5, column=0, columnspan=2, pady=5)
 
     def create_physics_converter(self):
-        physics_frame = tk.Frame(self.master, bd =2, relief=tk.RIDGE)
+        physics_frame = tk.Frame(self.master, bd =2, relief=tk.RIDGE,bg='#95daf8')
         physics_frame.grid(row=0, column=2, padx=10, pady=10, sticky=tk.W)
-        physics_label = tk.Label(physics_frame, text="Physics Converter", font=("Calibri", 16, "bold"))
+        physics_label = tk.Label(physics_frame, text="Physics Converter", font=("Calibri", 16, "bold"),bg='#95daf8')
         physics_label.grid(row=0, column=0, columnspan=2, pady=10)
         
-        length_label = tk.Label(physics_frame, text="Length:")
+        length_label = tk.Label(physics_frame, text="Length:",bg='#95daf8')
         length_label.grid(row=1, column=0, pady=5, padx=5, sticky=tk.E)
         self.length_entry = tk.Entry(physics_frame)
         self.length_entry.grid(row=1, column=1, pady=5, padx=5, sticky=tk.W)
-        from_length_label = tk.Label(physics_frame, text="From:")
+        from_length_label = tk.Label(physics_frame, text="From:",bg='#95daf8')
         from_length_label.grid(row=2, column=0, pady=5, padx=5, sticky=tk.E)
         self.from_length_var = tk.StringVar()
         self.from_length_var.set("inch")  
         from_length_menu = tk.OptionMenu(physics_frame, self.from_length_var, "inch", "mils", "feet", "cm", "miles")
         from_length_menu.grid(row=2, column=1, pady=5, padx=5, sticky=tk.W)
-        to_length_label = tk.Label(physics_frame, text="To:")
+        to_length_label = tk.Label(physics_frame, text="To:",bg='#95daf8')
         to_length_label.grid(row=3, column=0, pady=5, padx=5, sticky=tk.E)
         self.to_length_var = tk.StringVar()
         self.to_length_var.set("cm")  
         to_length_menu = tk.OptionMenu(physics_frame, self.to_length_var, "inch", "mils", "feet", "cm", "miles")
         to_length_menu.grid(row=3, column=1, pady=5, padx=5, sticky=tk.W)
-        convert_length_button = tk.Button(physics_frame, text="Convert", command=self.convert_length)
+        convert_length_button = tk.Button(physics_frame, text="Convert",bg='#73d6ff', command=self.convert_length)
         convert_length_button.grid(row=4, column=0, columnspan=2, pady=10)
         self.result_label_length = tk.Label(physics_frame, text="")
         self.result_label_length.grid(row=5, column=0, columnspan=2, pady=5)
 
-        volume_label = tk.Label(physics_frame, text="Volume:")
+        volume_label = tk.Label(physics_frame, text="Volume:",bg='#95daf8')
         volume_label.grid(row=1, column=6, pady=15, padx=15, sticky=tk.E)
         self.volume_entry = tk.Entry(physics_frame)
         self.volume_entry.grid(row=1, column=7, pady=5, padx=5, sticky=tk.W)
-        from_volume_label = tk.Label(physics_frame, text="From:")
+        from_volume_label = tk.Label(physics_frame, text="From:",bg='#95daf8')
         from_volume_label.grid(row=2, column=6, pady=5, padx=5, sticky=tk.E)
         self.from_volume_var = tk.StringVar()
         self.from_volume_var.set("liters")  
         from_volume_menu = tk.OptionMenu(physics_frame, self.from_volume_var, "liters", "cubic meters", "US gallons", "UK gallons", "cups", "ounces")
         from_volume_menu.grid(row=2, column=7, pady=5, padx=5, sticky=tk.W)
-        to_volume_label = tk.Label(physics_frame, text="To:")
+        to_volume_label = tk.Label(physics_frame, text="To:",bg='#95daf8')
         to_volume_label.grid(row=3, column=6, pady=5, padx=5, sticky=tk.E)
         self.to_volume_var = tk.StringVar()
         self.to_volume_var.set("cubic meters")  
         to_volume_menu = tk.OptionMenu(physics_frame, self.to_volume_var, "liters", "cubic meters", "US gallons", "UK gallons", "cups", "ounces")
         to_volume_menu.grid(row=3, column=7, pady=5, padx=5, sticky=tk.W)
-        convert_volume_button = tk.Button(physics_frame, text="Convert", command=self.convert_volume)
+        convert_volume_button = tk.Button(physics_frame, text="Convert", bg='#73d6ff', command=self.convert_volume)
         convert_volume_button.grid(row=4, column=6, columnspan=2, pady=10)
         self.result_label_volume = tk.Label(physics_frame, text="")
         self.result_label_volume.grid(row=5, column=6, columnspan=2, pady=5)
 
-        mass_label = tk.Label(physics_frame, text="Mass:")
+        mass_label = tk.Label(physics_frame, text="Mass:",bg='#95daf8')
         mass_label.grid(row=1, column=3, pady=10, padx=10, sticky=tk.E)
         self.mass_entry = tk.Entry(physics_frame)
         self.mass_entry.grid(row=1, column=4, pady=5, padx=5, sticky=tk.W)
-        from_mass_label = tk.Label(physics_frame, text="From:")
+        from_mass_label = tk.Label(physics_frame, text="From:",bg='#95daf8')
         from_mass_label.grid(row=2, column=3, pady=5, padx=5, sticky=tk.E)
         self.from_mass_var = tk.StringVar()
         self.from_mass_var.set("kg")  
         from_mass_menu = tk.OptionMenu(physics_frame, self.from_mass_var, "kg", "carats", "lbs")
         from_mass_menu.grid(row=2, column=4, pady=5, padx=5, sticky=tk.W)
-        to_mass_label = tk.Label(physics_frame, text="To:")
+        to_mass_label = tk.Label(physics_frame, text="To:",bg='#95daf8')
         to_mass_label.grid(row=3, column=3, pady=5, padx=5, sticky=tk.E)
         self.to_mass_var = tk.StringVar()
         self.to_mass_var.set("carats")  
         to_mass_menu = tk.OptionMenu(physics_frame, self.to_mass_var, "kg", "carats", "lbs")
         to_mass_menu.grid(row=3, column=4, pady=5, padx=5, sticky=tk.W)
-        convert_mass_button = tk.Button(physics_frame, text="Convert", command=self.convert_mass)
+        convert_mass_button = tk.Button(physics_frame, text="Convert",bg='#73d6ff', command=self.convert_mass)
         convert_mass_button.grid(row=4, column=3, columnspan=2, pady=10)
         self.result_label_mass = tk.Label(physics_frame, text="")
         self.result_label_mass.grid(row=5, column=4, pady=5)
@@ -319,7 +321,7 @@ class ConverterApp:
         except ValueError:
             self.result_label_mass.config(text="Invalid input. Please enter a valid number.")
     def exit():
-        self.master.destroy()
+        Self.master.destroy()
 
 if __name__ == "__main__":
     app = ConverterApp(tk.Tk())
