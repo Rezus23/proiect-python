@@ -1,0 +1,31 @@
+
+paths: C:\Users\Catalin\Documents\GitHub\proiectfinalpython
+
+prerequisits:   import tkinter as tk
+		from forex_python.converter import CurrencyRates
+		import deschidere
+
+rulare: python proiect.py in cmd
+
+
+description:
+ 	Introducere:
+Colaboratorii acestui proiect, Rezus Catalin si Mitrea Andrei, au avut inca de la inceput ca target realizarea unui convertor monetar implementat printr-o aplicatie GUI ultilizand biblioteca Tkinter. Pe langa indeplinirea obiectivului, am reusit sa extindem aria de conversie pentru marimi fizice, dar si pentru transformarile ce au loc intr-o memorie CPU.  
+	
+Despre proiect: 
+	In faza initiala ne-am concentrat pe convertorul monetar, o prima problema intalnita fiind actualizarea datelor cu privire la cursul valutar. Ca solutie, cum este mentionat si la referinte, am gasit biblioteca forex-python, care oferă funcționalități pentru a accesa informații despre cursurile valutare. Astfel, se pot face conversii la peste 30 de paritati diferite, actualizate in timp real, rezultatele fiind relevante la momentul efectuarii procesului. Ne-am ocupat apoi si de celalalte doua convertoare, de memorie si cel cu marimi fizice, lucrurile fiind mult mai clare din punct de vedere al valorilor conversiilor. In final, am experimentat si realizarea unei ferestre de inceput care sa se interconecteze cu aplicatia dar si cu un tabel ce contine multiplii si submultiplii si are optiunea de a te intoarce pe pagina principala.
+	Pe partea de design, interfața grafică oferă o experiență prietenoasă utilizatorului, facilitând interacțiunea cu funcțiile oferite de aplicație. Primul buton, "Open converter app", deschide o aplicație de conversie, interconectându-se cu modulul extern ConverterApp. Aceasta furnizează funcționalități de conversie valutară si nu numai într-un mediu interactiv. Al doilea buton, "Open table of units", afișează o fereastră cu un tabel al unităților de măsură, inclusiv multiplii și submultipli. Fiecare celulă din tabel este formată estetic, cu un fundal palid pentru a facilita citirea și înțelegerea informațiilor.
+
+Concluzie: 
+	Codul demonstrează abilitățile de gestionare a interfeței grafice, utilizând diferite elemente precum etichete, butoane și ferestre, pentru a oferi o experiență intuitivă utilizatorilor. În plus, utilizarea de imagini pentru fundaluri și redimensionarea acestora adaugă o notă de estetică, iar structura modulară și claritatea codului facilitează înțelegerea și extinderea ulterioară a funcționalităților aplicației.
+
+
+
+
+references: https://www.mathsisfun.com/measure/us-standard-length.html
+	https://www.convertunits.com/from/carats/to/lb#:~:text=We%20assume%20you%20are%20converting%20between%20carat%20%5Binternational%5D,errors%20may%20occur%2C%20so%20always%20check%20the%20results.
+	https://unitconverters.io/liters-conversion-converter/#:~:text=Convert%20Liters%20to%20and%20from%20US%20Gallons%20%28Liquid%29%2C,Barrels%20%28Liquid%29%2C%20US%20Barrels%20%28Oil%29%2C%20US%20Barrels%20%28Federal%29.
+	https://pypi.org/project/forex-python/
+	https://despretot.info/multiplii-si-submultiplii/
+honorable mentions: https://www.youtube.com/watch?v=fsL8oZXiJmY
+		    https://www.youtube.com/watch?v=NoTM8JciWaQ
