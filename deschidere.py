@@ -3,6 +3,8 @@ from forex_python.converter import CurrencyRates
 from proiect import ConverterApp
 
 
+
+
 def execute_converter():
     root = tk.Tk()
     app = ConverterApp(root)
@@ -17,7 +19,7 @@ class Table:
 
     def create_table(self):
         
-        header_values = [" Factor ", " Name ", "Symbol", " Factor ", " Name ", " Symbol "]
+        header_values = ["Factor", "Name", "Symbol", "Factor", "Name", "Symbol"]
         data_values = [
             ("10^1", "deca", "da", "10^(-1)", "deci", "d"),
             ("10^2", "hecto", "h", "10^(-2)", "centi", "c"),
@@ -55,6 +57,7 @@ def multiples_and_submultiples():
 
     root = tk.Toplevel() 
     root.title("Multiples and Submultiples Table")
+    
     t = Table(root, back_command=back_to_main)
     root.mainloop()
     
@@ -62,16 +65,23 @@ def multiples_and_submultiples():
 
 
 main_window = tk.Tk()
-main_window.geometry("900x400")
+main_window.geometry("400x400")
 main_window.title("Converter Opener")
+main_bg_image_path = "C:\\Users\\Catalin\\Desktop\\science-objects-icons-seamless-pattern_1308-134774.png"  
+main_bg_image = tk.PhotoImage(file=main_bg_image_path)
 
-label1 = tk.Label(main_window, text="Welcome!", font=('Times New Roman',25))
-label1.pack(pady=25)
+main_bg_label = tk.Label(main_window, image=main_bg_image)
 
-button1 = tk.Button(main_window, text="Open converter app", command=execute_converter)
+main_bg_label.place(relwidth=1, relheight=1)
+
+label1 = tk.Label(main_window, text="Welcome!", font=('Times New Roman',25),bg='#D3D3D3')
+label1.pack(pady=15)
+
+button1 = tk.Button(main_window, text="Open converter app", command=execute_converter,bg='#95daf8',activebackground='blue',activeforeground='black')
 button1.pack(pady=100)
 
 button2 = tk.Button(main_window, text="Open table of units", command=multiples_and_submultiples)
 button2.pack()
 
 main_window.mainloop()
+
