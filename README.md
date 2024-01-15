@@ -20,6 +20,9 @@ prerequisits:   import tkinter as tk
 		import deschidere
 
 rulare: python proiect.py in cmd
+contributie: 
+	Tudor: functiile de convertit, scheletul interfetei, documentatia privind exchange rate uri si forex
+	Catalin: design interfata, tabelul de multiplii si submultiplii, interconectarea ferestrelor
 
 
 references: 
